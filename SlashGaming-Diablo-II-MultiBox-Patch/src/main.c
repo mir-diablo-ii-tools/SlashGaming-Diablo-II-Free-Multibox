@@ -125,6 +125,45 @@ struct MAPI_GameAddress* GetGameAddresses() {
     intptr_t offset;
 
     switch (D2_GetRunningGameVersionId()) {
+      case VERSION_1_00: {
+        offset = 0x588C;
+        break;
+      }
+
+      case VERSION_1_01:
+      case VERSION_1_02:
+      case VERSION_1_03: {
+        offset = 0x587C;
+        break;
+      }
+
+      case VERSION_1_04B_C:
+      case VERSION_1_05:
+      case VERSION_1_05B:
+      case VERSION_1_06:
+      case VERSION_1_06B: {
+        offset = 0x43BC;
+        break;
+      }
+
+      case VERSION_1_07_BETA: {
+        offset = 0x441C;
+        break;
+      }
+
+      case VERSION_1_07: {
+        offset = 0x445C;
+        break;
+      }
+
+      case VERSION_1_08:
+      case VERSION_1_09:
+      case VERSION_1_09B:
+      case VERSION_1_09D: {
+        offset = 0x447C;
+        break;
+      }
+
       case VERSION_1_10: {
         offset = 0x446A;
         break;
