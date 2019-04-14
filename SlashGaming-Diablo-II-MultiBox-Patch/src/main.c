@@ -199,14 +199,30 @@ struct MAPI_GameAddress* GetGameAddresses() {
         break;
       }
 
+      case CLASSIC_1_14A: {
+        offset = 0x56E8;
+        break;
+      }
+
       case LOD_1_14A: {
         offset = 0x57C8;
+        break;
+      }
+
+      case CLASSIC_1_14B:
+      case CLASSIC_1_14C: {
+        offset = 0xE5E88;
         break;
       }
 
       case LOD_1_14B:
       case LOD_1_14C: {
         offset = 0xF2BC8;
+        break;
+      }
+
+      case CLASSIC_1_14D: {
+        offset = 0xE861B;
         break;
       }
 
