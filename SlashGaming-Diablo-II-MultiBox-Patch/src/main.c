@@ -139,6 +139,22 @@ struct MAPI_GameAddress* GetGameAddresses() {
         offset = 0xB6B0;
         break;
       }
+
+      case LOD_1_14A: {
+        offset = 0x57C8;
+        break;
+      }
+
+      case LOD_1_14B:
+      case LOD_1_14C: {
+        offset = 0xF2BC8;
+        break;
+      }
+
+      case LOD_1_14D: {
+        offset = 0xF562B;
+        break;
+      }
     }
 
     MAPI_GameAddress_InitFromLibraryIdAndOffset(
