@@ -243,6 +243,8 @@ struct MAPI_GameAddress* GetGameAddresses() {
         break;
       }
 
+      case VERSION_1_10_BETA:
+      case VERSION_1_10S_BETA:
       case VERSION_1_10: {
         offset = 0x446A;
         break;
