@@ -1,8 +1,8 @@
 /**
- * SlashGaming Diablo II MultiBox Patch
- * Copyright (C) 2019  Mir Drualga
+ * SlashGaming Diablo II Free MultiBox
+ * Copyright (C) 2019-2020  Mir Drualga
  *
- * This file is part of SlashGaming Diablo II MultiBox Patch.
+ * This file is part of SlashGaming Diablo II Free MultiBox.
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published

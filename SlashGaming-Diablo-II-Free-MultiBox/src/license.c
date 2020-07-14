@@ -1,8 +1,8 @@
 /**
- * SlashGaming Diablo II MultiBox Patch
- * Copyright (C) 2019  Mir Drualga
+ * SlashGaming Diablo II Free MultiBox
+ * Copyright (C) 2019-2020  Mir Drualga
  *
- * This file is part of SlashGaming Diablo II MultiBox Patch.
+ * This file is part of SlashGaming Diablo II Free MultiBox.
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published
@@ -35,19 +35,39 @@
  *  work.
  */
 
-#ifndef SGD2MBP_LICENSE_H_
-#define SGD2MBP_LICENSE_H_
+#include "license.h"
 
-#include "dllexport_define.inc"
+#include <stddef.h>
+#include <stdio.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif // __cplusplus
+static const char* kLicenseLines[] = {
+    u8"SlashGaming Diablo II MultiBox Patch",
+    u8"Copyright (C) 2019-2020  Mir Drualga",
+    u8"",
+    u8"This program is free software: you can redistribute it and/or modify",
+    u8"it under the terms of the GNU Affero General Public License as published",
+    u8"by the Free Software Foundation, either version 3 of the License, or",
+    u8"(at your option) any later version.",
+    u8"",
+    u8"This program is distributed in the hope that it will be useful,",
+    u8"but WITHOUT ANY WARRANTY; without even the implied warranty of",
+    u8"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the",
+    u8"GNU Affero General Public License for more details.",
+    u8"",
+    u8"You should have received a copy of the GNU Affero General Public License",
+    u8"along with this program.  If not, see <http://www.gnu.org/licenses/>.",
+    u8"",
+    u8"Additional permissions under GNU Affero General Public License version 3",
+    u8"section 7 have also been granted; please check the LICENSE file for more",
+    u8"information."
+};
 
-DLLEXPORT void PrintLicenseNotice();
+enum {
+  NUM_LICENSE_LINES = sizeof(kLicenseLines) / sizeof(kLicenseLines[0])
+};
 
-#ifdef __cplusplus
-} // extern "C"
-#endif // __cplusplus
-
-#endif  // SGD2MBP_LICENSE_H_
+void PrintLicenseNotice() {
+  for (size_t i = 0; i < NUM_LICENSE_LINES; i += 1) {
+    printf("%s \n", kLicenseLines[i]);
+  }
+}
