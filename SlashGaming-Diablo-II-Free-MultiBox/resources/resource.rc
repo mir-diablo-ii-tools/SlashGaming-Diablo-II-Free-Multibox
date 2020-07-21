@@ -47,8 +47,8 @@ SLASH_ICON ICON "flame_icons.ico"
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 
 VS_VERSION_INFO    VERSIONINFO
-  FILEVERSION      1,0,0,0
-  PRODUCTVERSION   1,0,0,0
+  FILEVERSION      1,0,1,0
+  PRODUCTVERSION   1,0,1,0
   FILEFLAGSMASK    0x3fL // VS_FFI_FILEFLAGSMASK
 #ifdef _DEBUG
   FILEFLAGS        0x1L  // VS_FF_DEBUG|VS_FF_PRIVATEBUILD|VS_FF_PRERELEASE
@@ -63,17 +63,17 @@ VS_VERSION_INFO    VERSIONINFO
   {
     BLOCK "040904E4" // Lang=US English, CharSet=Windows Multilingual
     {
-      VALUE "Build",            "2019\0"
-      VALUE "Comments",         "Enable multibox. Licensed under Affero GPL v3+.\0"
+      VALUE "Build",            "2020.07.21 0811\0"
+      VALUE "Comments",         "Enable D2 multiboxing. Licensed under Affero GPL v3+.\0"
       VALUE "CompanyName",      "SlashGaming\0"
       VALUE "Developer",        "Mir Drualga\0"
-      VALUE "FileDescription",  "SlashGaming Diablo II MultiBox Patch\0"
-      VALUE "InternalName",     "SlashGaming Diablo II MultiBox Patch\0"
+      VALUE "FileDescription",  "SlashGaming Diablo II Free MultiBox\0"
+      VALUE "InternalName",     "SlashGaming Diablo II Free MultiBox\0"
       VALUE "LegalCopyright",   "Copyright (C) 2019-2020  Mir Drualga\0"
       VALUE "LegalTrademarks",  "All rights reserved.\0"
       VALUE "PrivateBuild",     "\0"
-      VALUE "ProductName",      "SlashGaming Diablo II Version Detector\0"
-      VALUE "ProductVersion",   "1.0.0.0\0"
+      VALUE "ProductName",      "SlashGaming Diablo II Free MultiBox\0"
+      VALUE "ProductVersion",   "1.0.1.0\0"
       VALUE "SpecialBuild",     "\0"
       VALUE "Support",          "reddit.com/r/SlashDiablo\0"
     } // BLOCK "040904E4"
