@@ -35,20 +35,20 @@
  *  work.
  */
 
-#ifndef SGD2MBP_LICENSE_H_
-#define SGD2MBP_LICENSE_H_
+#ifndef SGD2FMB_LICENSE_H_
+#define SGD2FMB_LICENSE_H_
 
 #include "dllexport_define.inc"
 
 #ifdef __cplusplus
 extern "C" {
-#endif // __cplusplus
+#endif /* __cplusplus */
 
-DLLEXPORT void PrintLicenseNotice();
+DLLEXPORT void PrintLicenseNotice(void);
 
 #ifdef __cplusplus
 } // extern "C"
-#endif // __cplusplus
+#endif /* __cplusplus */
 
 #include "dllexport_undefine.inc"
-#endif  // SGD2MBP_LICENSE_H_
+#endif  /* SGD2FMB_LICENSE_H_ */
