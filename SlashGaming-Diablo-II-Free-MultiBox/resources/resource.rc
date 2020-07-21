@@ -35,8 +35,8 @@
  *  work.
  */
 
-#ifndef SGD2MBP_RESOURCE_RC_
-#define SGD2MBP_RESOURCE_RC_
+#ifndef SGD2FMB_RESOURCE_RC_
+#define SGD2FMB_RESOURCE_RC_
 
 #include <windows.h>
 
@@ -84,4 +84,4 @@ VS_VERSION_INFO    VERSIONINFO
   } // BLOCK "VarFileInfo"
 }
 
-#endif // SGD2MBP_RESOURCE_RC_
+#endif // SGD2FMB_RESOURCE_RC_

@@ -39,8 +39,8 @@
  * Warning: This header should never be used in any public interface!
  */
 
-#ifndef SGD2MBP_ASM_X86_MACRO_H_
-#define SGD2MBP_ASM_X86_MACRO_H_
+#ifndef SGD2FMB_ASM_X86_MACRO_H_
+#define SGD2FMB_ASM_X86_MACRO_H_
 
 #if defined(_MSC_VER)
 
@@ -58,4 +58,4 @@
 
 #endif
 
-#endif // SGD2MBP_ASM_X86_MACRO_H_
+#endif // SGD2FMB_ASM_X86_MACRO_H_
