@@ -38,9 +38,13 @@
 #ifndef SGD2FMB_REQUIRED_PATCHES_REQUIRED_PATCHES_H_
 #define SGD2FMB_REQUIRED_PATCHES_REQUIRED_PATCHES_H_
 
+#include <stdbool.h>
+
 #include <sgd2mapi.h>
 
 struct SGD2FMB_RequiredPatches {
+  bool is_applied;
+
   struct MAPI_GamePatch d2gfx_remove_instance_check_patch;
 };
 
@@ -53,6 +57,10 @@ void SGD2FMB_RequiredPatches_Deinit(
 );
 
 void SGD2FMB_RequiredPatches_Apply(
+    struct SGD2FMB_RequiredPatches* required_patches
+);
+
+void SGD2FMB_RequiredPatches_Remove(
     struct SGD2FMB_RequiredPatches* required_patches
 );
 

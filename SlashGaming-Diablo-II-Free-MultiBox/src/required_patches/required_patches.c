@@ -42,6 +42,8 @@
 struct SGD2FMB_RequiredPatches* SGD2FMB_RequiredPatches_Init(
     struct SGD2FMB_RequiredPatches* required_patches
 ) {
+  required_patches->is_applied = false;
+
   SGD2FMB_D2GFX_RemoveInstanceCheckPatch_Init(
       &required_patches->d2gfx_remove_instance_check_patch
   );
@@ -53,16 +55,30 @@ void SGD2FMB_RequiredPatches_Deinit(
   SGD2FMB_D2GFX_RemoveInstanceCheckPatch_Deinit(
       &required_patches->d2gfx_remove_instance_check_patch
   );
+
+  SGD2FMB_RequiredPatches_Remove(required_patches);
 }
 
 void SGD2FMB_RequiredPatches_Apply(
     struct SGD2FMB_RequiredPatches* required_patches
 ) {
+  if (required_patches->is_applied) {
+    return;
+  }
+
   MAPI_GamePatch_Apply(&required_patches->d2gfx_remove_instance_check_patch);
+
+  required_patches->is_applied = true;
 }
 
 void SGD2FMB_RequiredPatches_Remove(
     struct SGD2FMB_RequiredPatches* required_patches
 ) {
+  if (!required_patches->is_applied) {
+    return;
+  }
+
   MAPI_GamePatch_Remove(&required_patches->d2gfx_remove_instance_check_patch);
+
+  required_patches->is_applied = false;
 }
