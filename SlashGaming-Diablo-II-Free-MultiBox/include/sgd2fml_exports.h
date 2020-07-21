@@ -1,8 +1,8 @@
 /**
- * SlashGaming Diablo II MultiBox Patch
- * Copyright (C) 2019  Mir Drualga
+ * SlashGaming Diablo II Free MultiBox
+ * Copyright (C) 2019-2020  Mir Drualga
  *
- * This file is part of SlashGaming Diablo II MultiBox Patch.
+ * This file is part of SlashGaming Diablo II Free MultiBox.
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published
@@ -35,19 +35,22 @@
  *  work.
  */
 
-#ifndef SGD2MBP_LICENSE_H_
-#define SGD2MBP_LICENSE_H_
+#ifndef SGD2FMB_SGD2FML_EXPORTS_H_
+#define SGD2FMB_SGD2FML_EXPORTS_H_
 
 #include "dllexport_define.inc"
 
 #ifdef __cplusplus
 extern "C" {
-#endif // __cplusplus
+#endif /* __cplusplus */
 
-DLLEXPORT void PrintLicenseNotice();
+DLLEXPORT void SGD2FML_D2Win_OnLoadMpqs(void);
+
+DLLEXPORT void SGD2FML_D2Win_OnUnloadMpqs(void);
 
 #ifdef __cplusplus
-} // extern "C"
-#endif // __cplusplus
+} /* extern "C" */
+#endif /* __cplusplus */
 
-#endif  // SGD2MBP_LICENSE_H_
+#include "dllexport_undefine.inc"
+#endif /* SGD2FMB_SGD2FML_EXPORTS_H_ */

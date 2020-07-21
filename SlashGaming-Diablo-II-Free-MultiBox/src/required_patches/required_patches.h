@@ -1,8 +1,8 @@
 /**
- * SlashGaming Diablo II MultiBox Patch
- * Copyright (C) 2019  Mir Drualga
+ * SlashGaming Diablo II Free MultiBox
+ * Copyright (C) 2019-2020  Mir Drualga
  *
- * This file is part of SlashGaming Diablo II MultiBox Patch.
+ * This file is part of SlashGaming Diablo II Free MultiBox.
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published
@@ -35,27 +35,33 @@
  *  work.
  */
 
-/**
- * Warning: This header should never be used in any public interface!
- */
+#ifndef SGD2FMB_REQUIRED_PATCHES_REQUIRED_PATCHES_H_
+#define SGD2FMB_REQUIRED_PATCHES_REQUIRED_PATCHES_H_
 
-#ifndef SGD2MBP_ASM_X86_MACRO_H_
-#define SGD2MBP_ASM_X86_MACRO_H_
+#include <stdbool.h>
 
-#if defined(_MSC_VER)
+#include <sgd2mapi.h>
 
-#define ASM_X86(...) \
-    __asm { \
-      __VA_ARGS__ \
-    }
+struct SGD2FMB_RequiredPatches {
+  bool is_applied;
 
-#else
+  struct MAPI_GamePatch d2gfx_remove_instance_check_patch;
+};
 
-#define ASM_X86(...) \
-    asm( \
-        #__VA_ARGS__ \
-    );
+struct SGD2FMB_RequiredPatches* SGD2FMB_RequiredPatches_Init(
+    struct SGD2FMB_RequiredPatches* required_patches
+);
 
-#endif
+void SGD2FMB_RequiredPatches_Deinit(
+    struct SGD2FMB_RequiredPatches* required_patches
+);
 
-#endif // SGD2MBP_ASM_X86_MACRO_H_
+void SGD2FMB_RequiredPatches_Apply(
+    struct SGD2FMB_RequiredPatches* required_patches
+);
+
+void SGD2FMB_RequiredPatches_Remove(
+    struct SGD2FMB_RequiredPatches* required_patches
+);
+
+#endif /* SGD2FMB_REQUIRED_PATCHES_REQUIRED_PATCHES_H_ */

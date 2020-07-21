@@ -1,8 +1,8 @@
 /**
- * SlashGaming Diablo II MultiBox Patch
- * Copyright (C) 2019  Mir Drualga
+ * SlashGaming Diablo II Free MultiBox
+ * Copyright (C) 2019-2020  Mir Drualga
  *
- * This file is part of SlashGaming Diablo II MultiBox Patch.
+ * This file is part of SlashGaming Diablo II Free MultiBox.
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published
@@ -35,10 +35,27 @@
  *  work.
  */
 
-#if defined(SGD2MAPI_DLLEXPORT)
-#define DLLEXPORT __declspec(dllexport)
-#elif defined(SGD2MAPI_DLLIMPORT)
-#define DLLEXPORT __declspec(dllimport)
+/**
+ * Warning: This header should never be used in any public interface!
+ */
+
+#ifndef SGD2FMB_ASM_X86_MACRO_H_
+#define SGD2FMB_ASM_X86_MACRO_H_
+
+#if defined(_MSC_VER)
+
+#define ASM_X86(...) \
+    __asm { \
+      __VA_ARGS__ \
+    }
+
 #else
-#define DLLEXPORT
+
+#define ASM_X86(...) \
+    asm( \
+        #__VA_ARGS__ \
+    );
+
 #endif
+
+#endif // SGD2FMB_ASM_X86_MACRO_H_
