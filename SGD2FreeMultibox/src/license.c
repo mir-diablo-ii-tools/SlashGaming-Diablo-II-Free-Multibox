@@ -67,7 +67,9 @@ enum {
 };
 
 void PrintLicenseNotice() {
-  for (size_t i = 0; i < kLicenseLinesCount; i += 1) {
+  size_t i;
+
+  for (i = 0; i < kLicenseLinesCount; i += 1) {
     printf("%s \n", kLicenseLines[i]);
   }
 }

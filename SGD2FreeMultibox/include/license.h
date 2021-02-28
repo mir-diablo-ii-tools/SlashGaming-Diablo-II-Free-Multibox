@@ -47,7 +47,7 @@ extern "C" {
 DLLEXPORT void PrintLicenseNotice(void);
 
 #ifdef __cplusplus
-} // extern "C"
+} /* extern "C" */
 #endif /* __cplusplus */
 
 #include "dllexport_undefine.inc"

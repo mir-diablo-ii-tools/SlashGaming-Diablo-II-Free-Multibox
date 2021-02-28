@@ -36,9 +36,9 @@
  */
 
 #if defined(SGD2FMB_DLLEXPORT)
-#define DLLEXPORT __declspec(dllexport)
+  #define DLLEXPORT __declspec(dllexport)
 #elif defined(SGD2FMB_DLLIMPORT)
-#define DLLEXPORT __declspec(dllimport)
+  #define DLLEXPORT __declspec(dllimport)
 #else
-#define DLLEXPORT
+  #define DLLEXPORT
 #endif
