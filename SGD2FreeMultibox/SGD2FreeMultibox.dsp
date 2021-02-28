@@ -106,6 +106,14 @@ SOURCE=.\include\dllexport_undefine.inc
 SOURCE=.\include\license.h
 # End Source File
 # End Group
+# Begin Group "resource"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=.\resource\resource.rc
+# End Source File
+# End Group
 # Begin Group "src"
 
 # PROP Default_Filter ""

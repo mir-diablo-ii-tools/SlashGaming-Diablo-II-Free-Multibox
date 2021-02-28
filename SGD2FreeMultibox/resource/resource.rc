@@ -1,8 +1,8 @@
 /**
- * SlashGaming Diablo II Free MultiBox
- * Copyright (C) 2019-2020  Mir Drualga
+ * SlashGaming Diablo II Free Multibox
+ * Copyright (C) 2019-2021  Mir Drualga
  *
- * This file is part of SlashGaming Diablo II Free MultiBox.
+ * This file is part of SlashGaming Diablo II Free Multibox.
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published
@@ -67,12 +67,12 @@ VS_VERSION_INFO    VERSIONINFO
       VALUE "Comments",         "Enable D2 multiboxing. Licensed under Affero GPL v3+.\0"
       VALUE "CompanyName",      "SlashGaming\0"
       VALUE "Developer",        "Mir Drualga\0"
-      VALUE "FileDescription",  "SlashGaming Diablo II Free MultiBox\0"
-      VALUE "InternalName",     "SlashGaming Diablo II Free MultiBox\0"
-      VALUE "LegalCopyright",   "Copyright (C) 2019-2020  Mir Drualga\0"
+      VALUE "FileDescription",  "SlashGaming Diablo II Free Multibox\0"
+      VALUE "InternalName",     "SlashGaming Diablo II Free Multibox\0"
+      VALUE "LegalCopyright",   "Copyright (C) 2019-2021  Mir Drualga\0"
       VALUE "LegalTrademarks",  "All rights reserved.\0"
       VALUE "PrivateBuild",     "\0"
-      VALUE "ProductName",      "SlashGaming Diablo II Free MultiBox\0"
+      VALUE "ProductName",      "SlashGaming Diablo II Free Multibox\0"
       VALUE "ProductVersion",   "1.0.1.0\0"
       VALUE "SpecialBuild",     "\0"
       VALUE "Support",          "reddit.com/r/SlashDiablo\0"
