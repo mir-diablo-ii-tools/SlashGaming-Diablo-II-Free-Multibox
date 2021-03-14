@@ -1,8 +1,8 @@
 /**
- * SlashGaming Diablo II MultiBox Patch
- * Copyright (C) 2019  Mir Drualga
+ * SlashGaming Diablo II Free Multibox
+ * Copyright (C) 2019-2021  Mir Drualga
  *
- * This file is part of SlashGaming Diablo II MultiBox Patch.
+ * This file is part of SlashGaming Diablo II Free Multibox.
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published
@@ -35,27 +35,31 @@
  *  work.
  */
 
-/**
- * Warning: This header should never be used in any public interface!
- */
+#ifndef SGD2FMB_PATCHES_D2GFX_REMOVE_INSTANCE_CHECK_PATCH_D2GFX_REMOVE_INSTANCE_CHECK_PATCH_1_00_H_
+#define SGD2FMB_PATCHES_D2GFX_REMOVE_INSTANCE_CHECK_PATCH_D2GFX_REMOVE_INSTANCE_CHECK_PATCH_1_00_H_
 
-#ifndef SGD2MBP_ASM_X86_MACRO_H_
-#define SGD2MBP_ASM_X86_MACRO_H_
+#include <stddef.h>
 
-#if defined(_MSC_VER)
+#include <sgd2mapi.h>
 
-#define ASM_X86(...) \
-    __asm { \
-      __VA_ARGS__ \
-    }
+struct D2GFX_RemoveInstanceCheckPatch_1_00 {
+  struct Mapi_GamePatch patches[2];
+  size_t patches_count;
+};
 
-#else
+struct D2GFX_RemoveInstanceCheckPatch_1_00
+D2GFX_RemoveInstanceCheckPatch_1_00_Init(void);
 
-#define ASM_X86(...) \
-    asm( \
-        #__VA_ARGS__ \
-    );
+void D2GFX_RemoveInstanceCheckPatch_1_00_Deinit(
+    struct D2GFX_RemoveInstanceCheckPatch_1_00* patch
+);
 
-#endif
+void D2GFX_RemoveInstanceCheckPatch_1_00_Apply(
+    struct D2GFX_RemoveInstanceCheckPatch_1_00* patch
+);
 
-#endif // SGD2MBP_ASM_X86_MACRO_H_
+void D2GFX_RemoveInstanceCheckPatch_1_00_Remove(
+    struct D2GFX_RemoveInstanceCheckPatch_1_00* patch
+);
+
+#endif /* SGD2FMB_PATCHES_D2GFX_REMOVE_INSTANCE_CHECK_PATCH_D2GFX_REMOVE_INSTANCE_CHECK_PATCH_1_00_H_ */

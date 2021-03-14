@@ -1,8 +1,8 @@
 /**
- * SlashGaming Diablo II MultiBox Patch
- * Copyright (C) 2019  Mir Drualga
+ * SlashGaming Diablo II Free Multibox
+ * Copyright (C) 2019-2021  Mir Drualga
  *
- * This file is part of SlashGaming Diablo II MultiBox Patch.
+ * This file is part of SlashGaming Diablo II Free Multibox.
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published
@@ -35,19 +35,37 @@
  *  work.
  */
 
-#ifndef SGD2MBP_LICENSE_H_
-#define SGD2MBP_LICENSE_H_
+#include "required_patches.h"
 
-#include "dllexport_define.inc"
+struct RequiredPatches RequiredPatches_Init(void) {
+  struct RequiredPatches required_patches;
 
-#ifdef __cplusplus
-extern "C" {
-#endif // __cplusplus
+  required_patches.d2gfx_remove_instance_check_patch =
+      D2GFX_RemoveInstanceCheckPatch_Init();
 
-DLLEXPORT void PrintLicenseNotice();
+  return required_patches;
+}
 
-#ifdef __cplusplus
-} // extern "C"
-#endif // __cplusplus
+void RequiredPatches_Deinit(
+    struct RequiredPatches* required_patches
+) {
+  D2GFX_RemoveInstanceCheckPatch_Deinit(
+      &required_patches->d2gfx_remove_instance_check_patch
+  );
+}
 
-#endif  // SGD2MBP_LICENSE_H_
+void RequiredPatches_Apply(
+    struct RequiredPatches* required_patches
+) {
+  D2GFX_RemoveInstanceCheckPatch_Apply(
+      &required_patches->d2gfx_remove_instance_check_patch
+  );
+}
+
+void RequiredPatches_Remove(
+    struct RequiredPatches* required_patches
+) {
+  D2GFX_RemoveInstanceCheckPatch_Remove(
+      &required_patches->d2gfx_remove_instance_check_patch
+  );
+}
