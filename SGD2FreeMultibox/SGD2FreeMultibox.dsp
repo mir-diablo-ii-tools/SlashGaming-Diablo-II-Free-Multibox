@@ -117,6 +117,10 @@ SOURCE=.\include\sgd2fml_mod_exports.h
 
 SOURCE=.\resource\resource.rc
 # End Source File
+# Begin Source File
+
+SOURCE=.\resource\slashgaming_game_loader.ico
+# End Source File
 # End Group
 # Begin Group "src"
 
@@ -179,9 +183,5 @@ SOURCE=.\src\sgd2fml_mod_exports.c
 # End Source File
 # End Group
 # End Group
-# Begin Source File
-
-SOURCE=.\resource\slashgaming_game_loader.ico
-# End Source File
 # End Target
 # End Project
