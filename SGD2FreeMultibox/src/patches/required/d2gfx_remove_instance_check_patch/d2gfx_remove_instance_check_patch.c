@@ -37,143 +37,194 @@
 
 #include "d2gfx_remove_instance_check_patch.h"
 
-#include <stdint.h>
-#include <stddef.h>
+#include <mdc/malloc/malloc.h>
+#include <sgd2mapi.h>
 
-/**
- * A single byte, the opcode for JMP.
- */
-static const uint8_t kPatchBuffer[] = {
-  0xEB
-};
+struct D2GFX_RemoveInstanceCheckPatch
+D2GFX_RemoveInstanceCheckPatch_Init(void) {
+  struct D2GFX_RemoveInstanceCheckPatch patch;
 
-enum {
-  kPatchBufferSize = sizeof(kPatchBuffer)
-};
+  enum D2_GameVersion running_game_version;
 
-static ptrdiff_t GetPatchOffset(enum D2_GameVersion game_version) {
-  switch (game_version) {
-    case VERSION_1_00: {
-      return 0x588C;
+  running_game_version = D2_GameVersion_GetRunning();
+
+  switch (running_game_version) {
+    case D2_GameVersion_k1_00:
+    case D2_GameVersion_k1_01:
+    case D2_GameVersion_k1_02:
+    case D2_GameVersion_k1_03:
+    case D2_GameVersion_k1_04B_C:
+    case D2_GameVersion_k1_05:
+    case D2_GameVersion_k1_05B:
+    case D2_GameVersion_k1_06:
+    case D2_GameVersion_k1_06B:
+    case D2_GameVersion_k1_07Beta:
+    case D2_GameVersion_k1_07:
+    case D2_GameVersion_k1_08:
+    case D2_GameVersion_k1_09:
+    case D2_GameVersion_k1_09B:
+    case D2_GameVersion_k1_09D:
+    case D2_GameVersion_k1_10Beta:
+    case D2_GameVersion_k1_10SBeta:
+    case D2_GameVersion_k1_10:
+    case D2_GameVersion_k1_11:
+    case D2_GameVersion_k1_11B:
+    case D2_GameVersion_k1_12A:
+    case D2_GameVersion_k1_13ABeta:
+    case D2_GameVersion_k1_13C:
+    case D2_GameVersion_k1_13D:
+    case D2_GameVersion_kClassic1_14A:
+    case D2_GameVersion_kLod1_14A:
+    case D2_GameVersion_kClassic1_14B:
+    case D2_GameVersion_kClassic1_14C:
+    case D2_GameVersion_kLod1_14B:
+    case D2_GameVersion_kLod1_14C:
+    case D2_GameVersion_kClassic1_14D:
+    case D2_GameVersion_kLod1_14D: {
+      patch.patch.ptr_1_00 = Mdc_malloc(sizeof(*patch.patch.ptr_1_00));
+      *patch.patch.ptr_1_00 = D2GFX_RemoveInstanceCheckPatch_1_00_Init();
+      break;
     }
+  }
 
-    case VERSION_1_01:
-    case VERSION_1_02:
-    case VERSION_1_03: {
-      return 0x587C;
-    }
+  return patch;
+}
 
-    case VERSION_1_04B_C:
-    case VERSION_1_05:
-    case VERSION_1_05B:
-    case VERSION_1_06:
-    case VERSION_1_06B: {
-      return 0x43BC;
-    }
+void D2GFX_RemoveInstanceCheckPatch_Deinit(
+    struct D2GFX_RemoveInstanceCheckPatch* patch
+) {
+  enum D2_GameVersion running_game_version;
 
-    case VERSION_1_07_BETA: {
-      return 0x441C;
-    }
+  running_game_version = D2_GameVersion_GetRunning();
 
-    case VERSION_1_07: {
-      return 0x445C;
-    }
-
-    case VERSION_1_08:
-    case VERSION_1_09:
-    case VERSION_1_09B:
-    case VERSION_1_09D: {
-      return 0x447C;
-    }
-
-    case VERSION_1_10_BETA:
-    case VERSION_1_10S_BETA:
-    case VERSION_1_10: {
-      return 0x446A;
-    }
-
-    case VERSION_1_11: {
-      return 0x84CF;
-    }
-
-    case VERSION_1_11B: {
-      return 0x84AF;
-    }
-
-    case VERSION_1_12A: {
-      return 0x894F;
-    }
-
-    case VERSION_1_13A_PTR: {
-      return 0xB6DF;
-    }
-
-    case VERSION_1_13C: {
-      return 0x85BF;
-    }
-
-    case VERSION_1_13D: {
-      return 0xB6B0;
-    }
-
-    case CLASSIC_1_14A: {
-      return 0x56E8;
-    }
-
-    case LOD_1_14A: {
-      return 0x57C8;
-    }
-
-    case CLASSIC_1_14B:
-    case CLASSIC_1_14C: {
-      return 0xE5E88;
-    }
-
-    case LOD_1_14B:
-    case LOD_1_14C: {
-      return 0xF2BC8;
-    }
-
-    case CLASSIC_1_14D: {
-      return 0xE861B;
-    }
-
-    case LOD_1_14D: {
-      return 0xF562B;
+  switch (running_game_version) {
+    case D2_GameVersion_k1_00:
+    case D2_GameVersion_k1_01:
+    case D2_GameVersion_k1_02:
+    case D2_GameVersion_k1_03:
+    case D2_GameVersion_k1_04B_C:
+    case D2_GameVersion_k1_05:
+    case D2_GameVersion_k1_05B:
+    case D2_GameVersion_k1_06:
+    case D2_GameVersion_k1_06B:
+    case D2_GameVersion_k1_07Beta:
+    case D2_GameVersion_k1_07:
+    case D2_GameVersion_k1_08:
+    case D2_GameVersion_k1_09:
+    case D2_GameVersion_k1_09B:
+    case D2_GameVersion_k1_09D:
+    case D2_GameVersion_k1_10Beta:
+    case D2_GameVersion_k1_10SBeta:
+    case D2_GameVersion_k1_10:
+    case D2_GameVersion_k1_11:
+    case D2_GameVersion_k1_11B:
+    case D2_GameVersion_k1_12A:
+    case D2_GameVersion_k1_13ABeta:
+    case D2_GameVersion_k1_13C:
+    case D2_GameVersion_k1_13D:
+    case D2_GameVersion_kClassic1_14A:
+    case D2_GameVersion_kLod1_14A:
+    case D2_GameVersion_kClassic1_14B:
+    case D2_GameVersion_kClassic1_14C:
+    case D2_GameVersion_kLod1_14B:
+    case D2_GameVersion_kLod1_14C:
+    case D2_GameVersion_kClassic1_14D:
+    case D2_GameVersion_kLod1_14D: {
+      D2GFX_RemoveInstanceCheckPatch_1_00_Deinit(patch->patch.ptr_1_00);
+      Mdc_free(patch->patch.ptr_1_00);
+      return;
     }
   }
 }
 
-struct MAPI_GamePatch* SGD2FMB_D2GFX_RemoveInstanceCheckPatch_Init(
-    struct MAPI_GamePatch* d2gfx_remove_instance_check_patch
+void D2GFX_RemoveInstanceCheckPatch_Apply(
+    struct D2GFX_RemoveInstanceCheckPatch* patch
 ) {
-  const enum D2_GameVersion running_game_version = D2_GetRunningGameVersionId();
+  enum D2_GameVersion running_game_version;
 
-  ptrdiff_t patch_offset;
-  struct MAPI_GameAddress patch_address;
+  running_game_version = D2_GameVersion_GetRunning();
 
-  /* Initialize the patch address. */
-  patch_offset = GetPatchOffset(running_game_version);
-
-  MAPI_GameAddress_InitFromLibraryIdAndOffset(
-      &patch_address,
-      LIBRARY_D2GFX,
-      patch_offset
-  );
-
-  /* Initialize the patch. */
-  MAPI_GamePatch_InitGameBufferPatch(
-      d2gfx_remove_instance_check_patch,
-      &patch_address,
-      kPatchBuffer,
-      kPatchBufferSize
-  );
-
-  return d2gfx_remove_instance_check_patch;
+  switch (running_game_version) {
+    case D2_GameVersion_k1_00:
+    case D2_GameVersion_k1_01:
+    case D2_GameVersion_k1_02:
+    case D2_GameVersion_k1_03:
+    case D2_GameVersion_k1_04B_C:
+    case D2_GameVersion_k1_05:
+    case D2_GameVersion_k1_05B:
+    case D2_GameVersion_k1_06:
+    case D2_GameVersion_k1_06B:
+    case D2_GameVersion_k1_07Beta:
+    case D2_GameVersion_k1_07:
+    case D2_GameVersion_k1_08:
+    case D2_GameVersion_k1_09:
+    case D2_GameVersion_k1_09B:
+    case D2_GameVersion_k1_09D:
+    case D2_GameVersion_k1_10Beta:
+    case D2_GameVersion_k1_10SBeta:
+    case D2_GameVersion_k1_10:
+    case D2_GameVersion_k1_11:
+    case D2_GameVersion_k1_11B:
+    case D2_GameVersion_k1_12A:
+    case D2_GameVersion_k1_13ABeta:
+    case D2_GameVersion_k1_13C:
+    case D2_GameVersion_k1_13D:
+    case D2_GameVersion_kClassic1_14A:
+    case D2_GameVersion_kLod1_14A:
+    case D2_GameVersion_kClassic1_14B:
+    case D2_GameVersion_kClassic1_14C:
+    case D2_GameVersion_kLod1_14B:
+    case D2_GameVersion_kLod1_14C:
+    case D2_GameVersion_kClassic1_14D:
+    case D2_GameVersion_kLod1_14D: {
+      D2GFX_RemoveInstanceCheckPatch_1_00_Apply(patch->patch.ptr_1_00);
+      return;
+    }
+  }
 }
 
-void SGD2FMB_D2GFX_RemoveInstanceCheckPatch_Deinit(
-    struct MAPI_GamePatch* d2gfx_remove_instance_check_patch
+void D2GFX_RemoveInstanceCheckPatch_Remove(
+    struct D2GFX_RemoveInstanceCheckPatch* patch
 ) {
-  MAPI_GamePatch_Deinit(d2gfx_remove_instance_check_patch);
+  enum D2_GameVersion running_game_version;
+
+  running_game_version = D2_GameVersion_GetRunning();
+
+  switch (running_game_version) {
+    case D2_GameVersion_k1_00:
+    case D2_GameVersion_k1_01:
+    case D2_GameVersion_k1_02:
+    case D2_GameVersion_k1_03:
+    case D2_GameVersion_k1_04B_C:
+    case D2_GameVersion_k1_05:
+    case D2_GameVersion_k1_05B:
+    case D2_GameVersion_k1_06:
+    case D2_GameVersion_k1_06B:
+    case D2_GameVersion_k1_07Beta:
+    case D2_GameVersion_k1_07:
+    case D2_GameVersion_k1_08:
+    case D2_GameVersion_k1_09:
+    case D2_GameVersion_k1_09B:
+    case D2_GameVersion_k1_09D:
+    case D2_GameVersion_k1_10Beta:
+    case D2_GameVersion_k1_10SBeta:
+    case D2_GameVersion_k1_10:
+    case D2_GameVersion_k1_11:
+    case D2_GameVersion_k1_11B:
+    case D2_GameVersion_k1_12A:
+    case D2_GameVersion_k1_13ABeta:
+    case D2_GameVersion_k1_13C:
+    case D2_GameVersion_k1_13D:
+    case D2_GameVersion_kClassic1_14A:
+    case D2_GameVersion_kLod1_14A:
+    case D2_GameVersion_kClassic1_14B:
+    case D2_GameVersion_kClassic1_14C:
+    case D2_GameVersion_kLod1_14B:
+    case D2_GameVersion_kLod1_14C:
+    case D2_GameVersion_kClassic1_14D:
+    case D2_GameVersion_kLod1_14D: {
+      D2GFX_RemoveInstanceCheckPatch_1_00_Remove(patch->patch.ptr_1_00);
+      return;
+    }
+  }
 }

@@ -35,17 +35,30 @@
  *  work.
  */
 
-#ifndef SGD2FMB_REQUIRED_PATCHES_D2GFX_REMOVE_INSTANCE_CHECK_PATCH_D2GFX_REMOVE_INSTANCE_CHECK_PATCH_H_
-#define SGD2FMB_REQUIRED_PATCHES_D2GFX_REMOVE_INSTANCE_CHECK_PATCH_D2GFX_REMOVE_INSTANCE_CHECK_PATCH_H_
+#ifndef SGD2FMB_PATCHES_D2GFX_REMOVE_INSTANCE_CHECK_PATCH_D2GFX_REMOVE_INSTANCE_CHECK_PATCH_H_
+#define SGD2FMB_PATCHES_D2GFX_REMOVE_INSTANCE_CHECK_PATCH_D2GFX_REMOVE_INSTANCE_CHECK_PATCH_H_
 
-#include <sgd2mapi.h>
+#include "d2gfx_remove_instance_check_patch_1_00.h"
 
-struct MAPI_GamePatch* SGD2FMB_D2GFX_RemoveInstanceCheckPatch_Init(
-    struct MAPI_GamePatch* d2gfx_remove_instance_check_patch
+struct D2GFX_RemoveInstanceCheckPatch {
+  union {
+    struct D2GFX_RemoveInstanceCheckPatch_1_00* ptr_1_00;
+  } patch;
+};
+
+struct D2GFX_RemoveInstanceCheckPatch
+D2GFX_RemoveInstanceCheckPatch_Init(void);
+
+void D2GFX_RemoveInstanceCheckPatch_Deinit(
+    struct D2GFX_RemoveInstanceCheckPatch* patch
 );
 
-void SGD2FMB_D2GFX_RemoveInstanceCheckPatch_Deinit(
-    struct MAPI_GamePatch* d2gfx_remove_instance_check_patch
+void D2GFX_RemoveInstanceCheckPatch_Apply(
+    struct D2GFX_RemoveInstanceCheckPatch* patch
 );
 
-#endif /* SGD2FMB_REQUIRED_PATCHES_D2GFX_REMOVE_INSTANCE_CHECK_PATCH_D2GFX_REMOVE_INSTANCE_CHECK_PATCH_H_ */
+void D2GFX_RemoveInstanceCheckPatch_Remove(
+    struct D2GFX_RemoveInstanceCheckPatch* patch
+);
+
+#endif /* SGD2FMB_PATCHES_D2GFX_REMOVE_INSTANCE_CHECK_PATCH_D2GFX_REMOVE_INSTANCE_CHECK_PATCH_H_ */

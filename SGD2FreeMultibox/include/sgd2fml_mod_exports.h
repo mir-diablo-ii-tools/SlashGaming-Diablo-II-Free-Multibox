@@ -35,37 +35,26 @@
  *  work.
  */
 
-#include "required_patches.h"
+#ifndef SGD2FMB_SGD2FML_MOD_EXPORTS_H_
+#define SGD2FMB_SGD2FML_MOD_EXPORTS_H_
 
-struct RequiredPatches RequiredPatches_Init(void) {
-  struct RequiredPatches required_patches;
+#include "dllexport_define.inc"
 
-  required_patches.d2gfx_remove_instance_check_patch =
-      D2GFX_RemoveInstanceCheckPatch_Init();
+#ifdef __cplusplus
+extern "C" {
+#endif /* __cplusplus */
 
-  return required_patches;
-}
+DLLEXPORT long Sgd2fml_Mod_GetMinRequiredApiVersion(void);
 
-void RequiredPatches_Deinit(
-    struct RequiredPatches* required_patches
-) {
-  D2GFX_RemoveInstanceCheckPatch_Deinit(
-      &required_patches->d2gfx_remove_instance_check_patch
-  );
-}
+DLLEXPORT void Sgd2fml_Mod_OnLoadMpqs(void);
 
-void RequiredPatches_Apply(
-    struct RequiredPatches* required_patches
-) {
-  D2GFX_RemoveInstanceCheckPatch_Apply(
-      &required_patches->d2gfx_remove_instance_check_patch
-  );
-}
+DLLEXPORT void Sgd2fml_Mod_OnUnloadMpqs(void);
 
-void RequiredPatches_Remove(
-    struct RequiredPatches* required_patches
-) {
-  D2GFX_RemoveInstanceCheckPatch_Remove(
-      &required_patches->d2gfx_remove_instance_check_patch
-  );
-}
+DLLEXPORT void Sgd2fml_Mod_ReloadConfig(void);
+
+#ifdef __cplusplus
+} /* extern "C" */
+#endif /* __cplusplus */
+
+#include "dllexport_undefine.inc"
+#endif /* SGD2FMB_SGD2FML_MOD_EXPORTS_H_ */

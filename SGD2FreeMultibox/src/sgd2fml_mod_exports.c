@@ -35,37 +35,25 @@
  *  work.
  */
 
-#include "required_patches.h"
+#include "../include/sgd2fml_mod_exports.h"
 
-struct RequiredPatches RequiredPatches_Init(void) {
-  struct RequiredPatches required_patches;
+#include "patches/patches.h"
 
-  required_patches.d2gfx_remove_instance_check_patch =
-      D2GFX_RemoveInstanceCheckPatch_Init();
+static struct Patches patches;
 
-  return required_patches;
+long Sgd2fml_Mod_GetMinRequiredApiVersion(void) {
+  return 0L;
 }
 
-void RequiredPatches_Deinit(
-    struct RequiredPatches* required_patches
-) {
-  D2GFX_RemoveInstanceCheckPatch_Deinit(
-      &required_patches->d2gfx_remove_instance_check_patch
-  );
+void Sgd2fml_Mod_OnLoadMpqs(void) {
+  patches = Patches_Init();
+  Patches_Apply(&patches);
 }
 
-void RequiredPatches_Apply(
-    struct RequiredPatches* required_patches
-) {
-  D2GFX_RemoveInstanceCheckPatch_Apply(
-      &required_patches->d2gfx_remove_instance_check_patch
-  );
+void Sgd2fml_Mod_OnUnloadMpqs(void) {
+  Patches_Remove(&patches);
+  Patches_Deinit(&patches);
 }
 
-void RequiredPatches_Remove(
-    struct RequiredPatches* required_patches
-) {
-  D2GFX_RemoveInstanceCheckPatch_Remove(
-      &required_patches->d2gfx_remove_instance_check_patch
-  );
+void Sgd2fml_Mod_ReloadConfig(void) {
 }

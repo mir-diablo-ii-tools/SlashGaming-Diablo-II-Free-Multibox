@@ -35,37 +35,26 @@
  *  work.
  */
 
-#include "required_patches.h"
+#include "patches.h"
 
-struct RequiredPatches RequiredPatches_Init(void) {
-  struct RequiredPatches required_patches;
+struct Patches Patches_Init(void) {
+  struct Patches patches;
 
-  required_patches.d2gfx_remove_instance_check_patch =
-      D2GFX_RemoveInstanceCheckPatch_Init();
+  patches.required_patches = RequiredPatches_Init();
 
-  return required_patches;
+  return patches;
 }
 
-void RequiredPatches_Deinit(
-    struct RequiredPatches* required_patches
+void Patches_Deinit(
+    struct Patches* patches
 ) {
-  D2GFX_RemoveInstanceCheckPatch_Deinit(
-      &required_patches->d2gfx_remove_instance_check_patch
-  );
+  RequiredPatches_Deinit(&patches->required_patches);
 }
 
-void RequiredPatches_Apply(
-    struct RequiredPatches* required_patches
-) {
-  D2GFX_RemoveInstanceCheckPatch_Apply(
-      &required_patches->d2gfx_remove_instance_check_patch
-  );
+void Patches_Apply(struct Patches* patches) {
+  RequiredPatches_Apply(&patches->required_patches);
 }
 
-void RequiredPatches_Remove(
-    struct RequiredPatches* required_patches
-) {
-  D2GFX_RemoveInstanceCheckPatch_Remove(
-      &required_patches->d2gfx_remove_instance_check_patch
-  );
+void Patches_Remove(struct Patches* patches) {
+  RequiredPatches_Remove(&patches->required_patches);
 }

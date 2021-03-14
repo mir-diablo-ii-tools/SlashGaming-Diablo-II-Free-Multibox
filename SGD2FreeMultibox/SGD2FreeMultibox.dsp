@@ -53,7 +53,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /dll /machine:I386
-# ADD LINK32 libunicows.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /dll /machine:I386
+# ADD LINK32 libunicows.lib MDCc.lib SGD2MAPIc.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /dll /machine:I386
 
 !ELSEIF  "$(CFG)" == "SGD2FreeMultibox - Win32 Debug"
 
@@ -68,8 +68,8 @@ LINK32=link.exe
 # PROP Intermediate_Dir "Debug"
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
-# ADD BASE CPP /nologo /MTd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "SGD2FREEMULTIBOX_EXPORTS" /YX /FD /GZ  /c
-# ADD CPP /nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_UNICODE" /D "UNICODE" /D "_USRDLL" /D "SGD2FMB_DLLEXPORT" /YX /FD /GZ  /c
+# ADD BASE CPP /nologo /MTd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "SGD2FREEMULTIBOX_EXPORTS" /YX /FD /GZ /c
+# ADD CPP /nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_UNICODE" /D "UNICODE" /D "_USRDLL" /D "SGD2FMB_DLLEXPORT" /YX /FD /GZ /c
 # ADD BASE MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x409 /d "_DEBUG"
@@ -79,7 +79,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /dll /debug /machine:I386 /pdbtype:sept
-# ADD LINK32 libunicows.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /dll /debug /machine:I386 /pdbtype:sept
+# ADD LINK32 libunicows.lib MDCcD.lib SGD2MAPIcD.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /dll /debug /machine:I386 /pdbtype:sept
 
 !ENDIF 
 
@@ -105,6 +105,10 @@ SOURCE=.\include\dllexport_undefine.inc
 
 SOURCE=.\include\license.h
 # End Source File
+# Begin Source File
+
+SOURCE=.\include\sgd2fml_mod_exports.h
+# End Source File
 # End Group
 # Begin Group "resource"
 
@@ -117,11 +121,67 @@ SOURCE=.\resource\resource.rc
 # Begin Group "src"
 
 # PROP Default_Filter ""
+# Begin Group "patches"
+
+# PROP Default_Filter ""
+# Begin Group "required"
+
+# PROP Default_Filter ""
+# Begin Group "d2gfx_ricp"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=.\src\patches\required\d2gfx_remove_instance_check_patch\d2gfx_remove_instance_check_patch.c
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\patches\required\d2gfx_remove_instance_check_patch\d2gfx_remove_instance_check_patch.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\patches\required\d2gfx_remove_instance_check_patch\d2gfx_remove_instance_check_patch_1_00.c
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\patches\required\d2gfx_remove_instance_check_patch\d2gfx_remove_instance_check_patch_1_00.h
+# End Source File
+# End Group
+# Begin Source File
+
+SOURCE=.\src\patches\required\required_patches.c
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\patches\required\required_patches.h
+# End Source File
+# End Group
+# Begin Source File
+
+SOURCE=.\src\patches\patches.c
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\patches\patches.h
+# End Source File
+# End Group
+# Begin Source File
+
+SOURCE=.\src\dll_main.c
+# End Source File
 # Begin Source File
 
 SOURCE=.\src\license.c
 # End Source File
+# Begin Source File
+
+SOURCE=.\src\sgd2fml_mod_exports.c
+# End Source File
 # End Group
 # End Group
+# Begin Source File
+
+SOURCE=.\resource\slashgaming_game_loader.ico
+# End Source File
 # End Target
 # End Project

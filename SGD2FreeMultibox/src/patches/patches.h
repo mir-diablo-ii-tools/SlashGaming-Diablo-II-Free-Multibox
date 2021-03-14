@@ -35,22 +35,19 @@
  *  work.
  */
 
-#ifndef SGD2FMB_SGD2FML_EXPORTS_H_
-#define SGD2FMB_SGD2FML_EXPORTS_H_
+#ifndef SGD2FMB_PATCHES_PATCHES_H_
+#define SGD2FMB_PATCHES_PATCHES_H_
 
-#include "dllexport_define.inc"
+#include "required/required_patches.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif /* __cplusplus */
+struct Patches {
+  struct RequiredPatches required_patches;
+};
 
-DLLEXPORT void SGD2FML_D2Win_OnLoadMpqs(void);
+struct Patches Patches_Init(void);
+void Patches_Deinit(struct Patches* patches);
 
-DLLEXPORT void SGD2FML_D2Win_OnUnloadMpqs(void);
+void Patches_Apply(struct Patches* patches);
+void Patches_Remove(struct Patches* patches);
 
-#ifdef __cplusplus
-} /* extern "C" */
-#endif /* __cplusplus */
-
-#include "dllexport_undefine.inc"
-#endif /* SGD2FMB_SGD2FML_EXPORTS_H_ */
+#endif /* SGD2FMB_PATCHES_PATCHES_H_ */

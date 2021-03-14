@@ -35,33 +35,29 @@
  *  work.
  */
 
-#ifndef SGD2FMB_REQUIRED_PATCHES_REQUIRED_PATCHES_H_
-#define SGD2FMB_REQUIRED_PATCHES_REQUIRED_PATCHES_H_
-
-#include <stdbool.h>
+#ifndef SGD2FMB_PATCHES_REQUIRED_REQUIRED_PATCHES_H_
+#define SGD2FMB_PATCHES_REQUIRED_REQUIRED_PATCHES_H_
 
 #include <sgd2mapi.h>
+#include "d2gfx_remove_instance_check_patch/d2gfx_remove_instance_check_patch.h"
 
-struct SGD2FMB_RequiredPatches {
-  bool is_applied;
-
-  struct MAPI_GamePatch d2gfx_remove_instance_check_patch;
+struct RequiredPatches {
+  struct D2GFX_RemoveInstanceCheckPatch
+      d2gfx_remove_instance_check_patch;
 };
 
-struct SGD2FMB_RequiredPatches* SGD2FMB_RequiredPatches_Init(
-    struct SGD2FMB_RequiredPatches* required_patches
+struct RequiredPatches RequiredPatches_Init(void);
+
+void RequiredPatches_Deinit(
+    struct RequiredPatches* required_patches
 );
 
-void SGD2FMB_RequiredPatches_Deinit(
-    struct SGD2FMB_RequiredPatches* required_patches
+void RequiredPatches_Apply(
+    struct RequiredPatches* required_patches
 );
 
-void SGD2FMB_RequiredPatches_Apply(
-    struct SGD2FMB_RequiredPatches* required_patches
+void RequiredPatches_Remove(
+    struct RequiredPatches* required_patches
 );
 
-void SGD2FMB_RequiredPatches_Remove(
-    struct SGD2FMB_RequiredPatches* required_patches
-);
-
-#endif /* SGD2FMB_REQUIRED_PATCHES_REQUIRED_PATCHES_H_ */
+#endif /* SGD2FMB_PATCHES_REQUIRED_REQUIRED_PATCHES_H_ */
