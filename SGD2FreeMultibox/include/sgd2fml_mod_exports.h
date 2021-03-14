@@ -1,8 +1,8 @@
 /**
- * SlashGaming Diablo II Free MultiBox
- * Copyright (C) 2019-2020  Mir Drualga
+ * SlashGaming Diablo II Free Multibox
+ * Copyright (C) 2019-2021  Mir Drualga
  *
- * This file is part of SlashGaming Diablo II Free MultiBox.
+ * This file is part of SlashGaming Diablo II Free Multibox.
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published
@@ -35,10 +35,26 @@
  *  work.
  */
 
-#if defined(SGD2FMB_DLLEXPORT)
-#define DLLEXPORT __declspec(dllexport)
-#elif defined(SGD2FMB_DLLIMPORT)
-#define DLLEXPORT __declspec(dllimport)
-#else
-#define DLLEXPORT
-#endif
+#ifndef SGD2FMB_SGD2FML_MOD_EXPORTS_H_
+#define SGD2FMB_SGD2FML_MOD_EXPORTS_H_
+
+#include "dllexport_define.inc"
+
+#ifdef __cplusplus
+extern "C" {
+#endif /* __cplusplus */
+
+DLLEXPORT long Sgd2fml_Mod_GetMinRequiredApiVersion(void);
+
+DLLEXPORT void Sgd2fml_Mod_OnLoadMpqs(void);
+
+DLLEXPORT void Sgd2fml_Mod_OnUnloadMpqs(void);
+
+DLLEXPORT void Sgd2fml_Mod_ReloadConfig(void);
+
+#ifdef __cplusplus
+} /* extern "C" */
+#endif /* __cplusplus */
+
+#include "dllexport_undefine.inc"
+#endif /* SGD2FMB_SGD2FML_MOD_EXPORTS_H_ */

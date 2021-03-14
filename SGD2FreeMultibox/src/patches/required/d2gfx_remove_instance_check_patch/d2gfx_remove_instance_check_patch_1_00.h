@@ -1,8 +1,8 @@
 /**
- * SlashGaming Diablo II Free MultiBox
- * Copyright (C) 2019-2020  Mir Drualga
+ * SlashGaming Diablo II Free Multibox
+ * Copyright (C) 2019-2021  Mir Drualga
  *
- * This file is part of SlashGaming Diablo II Free MultiBox.
+ * This file is part of SlashGaming Diablo II Free Multibox.
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published
@@ -35,33 +35,31 @@
  *  work.
  */
 
-#ifndef SGD2FMB_REQUIRED_PATCHES_REQUIRED_PATCHES_H_
-#define SGD2FMB_REQUIRED_PATCHES_REQUIRED_PATCHES_H_
+#ifndef SGD2FMB_PATCHES_D2GFX_REMOVE_INSTANCE_CHECK_PATCH_D2GFX_REMOVE_INSTANCE_CHECK_PATCH_1_00_H_
+#define SGD2FMB_PATCHES_D2GFX_REMOVE_INSTANCE_CHECK_PATCH_D2GFX_REMOVE_INSTANCE_CHECK_PATCH_1_00_H_
 
-#include <stdbool.h>
+#include <stddef.h>
 
 #include <sgd2mapi.h>
 
-struct SGD2FMB_RequiredPatches {
-  bool is_applied;
-
-  struct MAPI_GamePatch d2gfx_remove_instance_check_patch;
+struct D2GFX_RemoveInstanceCheckPatch_1_00 {
+  struct Mapi_GamePatch patches[2];
+  size_t patches_count;
 };
 
-struct SGD2FMB_RequiredPatches* SGD2FMB_RequiredPatches_Init(
-    struct SGD2FMB_RequiredPatches* required_patches
+struct D2GFX_RemoveInstanceCheckPatch_1_00
+D2GFX_RemoveInstanceCheckPatch_1_00_Init(void);
+
+void D2GFX_RemoveInstanceCheckPatch_1_00_Deinit(
+    struct D2GFX_RemoveInstanceCheckPatch_1_00* patch
 );
 
-void SGD2FMB_RequiredPatches_Deinit(
-    struct SGD2FMB_RequiredPatches* required_patches
+void D2GFX_RemoveInstanceCheckPatch_1_00_Apply(
+    struct D2GFX_RemoveInstanceCheckPatch_1_00* patch
 );
 
-void SGD2FMB_RequiredPatches_Apply(
-    struct SGD2FMB_RequiredPatches* required_patches
+void D2GFX_RemoveInstanceCheckPatch_1_00_Remove(
+    struct D2GFX_RemoveInstanceCheckPatch_1_00* patch
 );
 
-void SGD2FMB_RequiredPatches_Remove(
-    struct SGD2FMB_RequiredPatches* required_patches
-);
-
-#endif /* SGD2FMB_REQUIRED_PATCHES_REQUIRED_PATCHES_H_ */
+#endif /* SGD2FMB_PATCHES_D2GFX_REMOVE_INSTANCE_CHECK_PATCH_D2GFX_REMOVE_INSTANCE_CHECK_PATCH_1_00_H_ */

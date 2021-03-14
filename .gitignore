@@ -1,32 +1,57 @@
-*.exe
-*.dll
-*.so
-*.a
-*.def
-*.res
+# Visual C++ 6.0 Data Files
+*.ncb
+*.opt
+*.positions
+*.wwdb
 
+# Binaries
+*.a
+*.dll
+*.exe
+*.lib
 *.o
 *.obj
+*.so
 
-*.cbp
+# Debug / Intermediate Files
+*.ipch
+*.idb
+*.ilk
+*.iobj
+*.ipdb
+*.pch
+*.pdb
+*.recipe
+*.vcxproj.FileListAbsolute.txt
+
+# Linker / Executable Secondary Files
+*.exp
+
+# Resource Files
+*.aps
 *.res
-*.layout
-*.depend
+
+# Logs
+*.log
+*.plg
+*.tlog
+
+# Thumbnails
+*.DS_STORE
+*.db
+
+# Visual Studio 2005 Solution / Project Files
+*.vcproj
+
+# Visual Studio 2010 Solution / Project Files
+.vs
 
 *.sln
 *.vcxproj
 *.vcxproj.filters
 *.vcxproj.user
 
-*.json
-*.zip
+# Compression Formats
 *.7z
-
-*.log
-*.tlog
-*.idb
-*.pdb
-
-.vs/
-Debug/
-Release/
+*.rar
+*.zip

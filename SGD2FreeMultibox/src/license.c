@@ -1,8 +1,8 @@
 /**
- * SlashGaming Diablo II Free MultiBox
- * Copyright (C) 2019-2020  Mir Drualga
+ * SlashGaming Diablo II Free Multibox
+ * Copyright (C) 2019-2021  Mir Drualga
  *
- * This file is part of SlashGaming Diablo II Free MultiBox.
+ * This file is part of SlashGaming Diablo II Free Multibox.
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published
@@ -35,27 +35,41 @@
  *  work.
  */
 
-/**
- * Warning: This header should never be used in any public interface!
- */
+#include "../include/license.h"
 
-#ifndef SGD2FMB_ASM_X86_MACRO_H_
-#define SGD2FMB_ASM_X86_MACRO_H_
+#include <stddef.h>
+#include <stdio.h>
 
-#if defined(_MSC_VER)
+static const char* const kLicenseLines[] = {
+    "SlashGaming Diablo II Free Multibox",
+    "Copyright (C) 2019-2021  Mir Drualga",
+    "",
+    "This program is free software: you can redistribute it and/or modify",
+    "it under the terms of the GNU Affero General Public License as published",
+    "by the Free Software Foundation, either version 3 of the License, or",
+    "(at your option) any later version.",
+    "",
+    "This program is distributed in the hope that it will be useful,",
+    "but WITHOUT ANY WARRANTY; without even the implied warranty of",
+    "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the",
+    "GNU Affero General Public License for more details.",
+    "",
+    "You should have received a copy of the GNU Affero General Public License",
+    "along with this program.  If not, see <http://www.gnu.org/licenses/>.",
+    "",
+    "Additional permissions under GNU Affero General Public License version 3",
+    "section 7 have also been granted; please check the LICENSE file for more",
+    "information."
+};
 
-#define ASM_X86(...) \
-    __asm { \
-      __VA_ARGS__ \
-    }
+enum {
+  kLicenseLinesCount = sizeof(kLicenseLines) / sizeof(kLicenseLines[0])
+};
 
-#else
+void PrintLicenseNotice() {
+  size_t i;
 
-#define ASM_X86(...) \
-    asm( \
-        #__VA_ARGS__ \
-    );
-
-#endif
-
-#endif // SGD2FMB_ASM_X86_MACRO_H_
+  for (i = 0; i < kLicenseLinesCount; i += 1) {
+    printf("%s \n", kLicenseLines[i]);
+  }
+}

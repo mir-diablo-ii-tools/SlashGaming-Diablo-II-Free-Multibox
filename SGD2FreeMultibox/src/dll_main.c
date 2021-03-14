@@ -1,8 +1,8 @@
 /**
- * SlashGaming Diablo II Free MultiBox
- * Copyright (C) 2019-2020  Mir Drualga
+ * SlashGaming Diablo II Free Multibox
+ * Copyright (C) 2019-2021  Mir Drualga
  *
- * This file is part of SlashGaming Diablo II Free MultiBox.
+ * This file is part of SlashGaming Diablo II Free Multibox.
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published
@@ -35,50 +35,36 @@
  *  work.
  */
 
-#include "required_patches.h"
+#include <windows.h>
 
-#include "d2gfx_remove_instance_check_patch/d2gfx_remove_instance_check_patch.h"
+#include "../include/sgd2fml_mod_exports.h"
 
-struct SGD2FMB_RequiredPatches* SGD2FMB_RequiredPatches_Init(
-    struct SGD2FMB_RequiredPatches* required_patches
+#ifdef __cplusplus
+extern "C" {
+#endif // __cplusplus
+
+BOOL WINAPI DllMain(
+    HINSTANCE hinstDLL,
+    DWORD fdwReason,
+    LPVOID lpvReserved
 ) {
-  required_patches->is_applied = false;
+  switch (fdwReason) {
+    case DLL_PROCESS_ATTACH: {
+      Sgd2fml_Mod_OnLoadMpqs();
 
-  SGD2FMB_D2GFX_RemoveInstanceCheckPatch_Init(
-      &required_patches->d2gfx_remove_instance_check_patch
-  );
-}
+      return TRUE;
+    }
 
-void SGD2FMB_RequiredPatches_Deinit(
-    struct SGD2FMB_RequiredPatches* required_patches
-) {
-  SGD2FMB_D2GFX_RemoveInstanceCheckPatch_Deinit(
-      &required_patches->d2gfx_remove_instance_check_patch
-  );
+    case DLL_PROCESS_DETACH: {
+      Sgd2fml_Mod_OnUnloadMpqs();
 
-  SGD2FMB_RequiredPatches_Remove(required_patches);
-}
-
-void SGD2FMB_RequiredPatches_Apply(
-    struct SGD2FMB_RequiredPatches* required_patches
-) {
-  if (required_patches->is_applied) {
-    return;
+      return TRUE;
+    }
   }
 
-  MAPI_GamePatch_Apply(&required_patches->d2gfx_remove_instance_check_patch);
-
-  required_patches->is_applied = true;
+  return TRUE;
 }
 
-void SGD2FMB_RequiredPatches_Remove(
-    struct SGD2FMB_RequiredPatches* required_patches
-) {
-  if (!required_patches->is_applied) {
-    return;
-  }
-
-  MAPI_GamePatch_Remove(&required_patches->d2gfx_remove_instance_check_patch);
-
-  required_patches->is_applied = false;
-}
+#ifdef __cplusplus
+} // extern "C"
+#endif // __cplusplus

@@ -1,8 +1,8 @@
 /**
- * SlashGaming Diablo II Free MultiBox
- * Copyright (C) 2019-2020  Mir Drualga
+ * SlashGaming Diablo II Free Multibox
+ * Copyright (C) 2019-2021  Mir Drualga
  *
- * This file is part of SlashGaming Diablo II Free MultiBox.
+ * This file is part of SlashGaming Diablo II Free Multibox.
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Affero General Public License as published
@@ -35,34 +35,26 @@
  *  work.
  */
 
-#include <windows.h>
+#include "patches.h"
 
-#include "../include/sgd2fml_exports.h"
+struct Patches Patches_Init(void) {
+  struct Patches patches;
 
-#ifdef __cplusplus
-extern "C" {
-#endif // __cplusplus
+  patches.required_patches = RequiredPatches_Init();
 
-BOOL WINAPI DllMain(
-    HINSTANCE hinstDLL,
-    DWORD fdwReason,
-    LPVOID lpvReserved
-) {
-  switch (fdwReason) {
-    case DLL_PROCESS_ATTACH: {
-      SGD2FML_D2Win_OnLoadMpqs();
-      return TRUE;
-    }
-
-    case DLL_PROCESS_DETACH: {
-      SGD2FML_D2Win_OnUnloadMpqs();
-      return TRUE;
-    }
-  }
-
-  return TRUE;
+  return patches;
 }
 
-#ifdef __cplusplus
-} // extern "C"
-#endif // __cplusplus
+void Patches_Deinit(
+    struct Patches* patches
+) {
+  RequiredPatches_Deinit(&patches->required_patches);
+}
+
+void Patches_Apply(struct Patches* patches) {
+  RequiredPatches_Apply(&patches->required_patches);
+}
+
+void Patches_Remove(struct Patches* patches) {
+  RequiredPatches_Remove(&patches->required_patches);
+}
