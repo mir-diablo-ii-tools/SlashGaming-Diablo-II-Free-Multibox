@@ -4,7 +4,7 @@
 
 # TARGTYPE "Win32 (x86) Dynamic-Link Library" 0x0102
 
-CFG=SGD2FreeMultibox - Win32 Debug
+CFG=SGD2FreeMultibox - Win32 Debug Dll
 !MESSAGE This is not a valid makefile. To build this project using NMAKE,
 !MESSAGE use the Export Makefile command and run
 !MESSAGE 
@@ -13,12 +13,14 @@ CFG=SGD2FreeMultibox - Win32 Debug
 !MESSAGE You can specify a configuration when running NMAKE
 !MESSAGE by defining the macro CFG on the command line. For example:
 !MESSAGE 
-!MESSAGE NMAKE /f "SGD2FreeMultibox.mak" CFG="SGD2FreeMultibox - Win32 Debug"
+!MESSAGE NMAKE /f "SGD2FreeMultibox.mak" CFG="SGD2FreeMultibox - Win32 Debug Dll"
 !MESSAGE 
 !MESSAGE Possible choices for configuration are:
 !MESSAGE 
 !MESSAGE "SGD2FreeMultibox - Win32 Release" (based on "Win32 (x86) Dynamic-Link Library")
 !MESSAGE "SGD2FreeMultibox - Win32 Debug" (based on "Win32 (x86) Dynamic-Link Library")
+!MESSAGE "SGD2FreeMultibox - Win32 Release Dll" (based on "Win32 (x86) Dynamic-Link Library")
+!MESSAGE "SGD2FreeMultibox - Win32 Debug Dll" (based on "Win32 (x86) Dynamic-Link Library")
 !MESSAGE 
 
 # Begin Project
@@ -83,12 +85,72 @@ LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /dll /debug /machine:I386 /pdbtype:sept
 # ADD LINK32 libunicows.lib libMDCcD.lib libSGD2MAPIcD.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /dll /debug /machine:I386 /out:"Debug/SGD2FreeMultiboxD.static.dll" /pdbtype:sept /libpath:"../third_party/MDC/MDCc/Debug" /libpath:"../third_party/SGD2MAPI98/SGD2MAPIc/Debug"
 
+!ELSEIF  "$(CFG)" == "SGD2FreeMultibox - Win32 Release Dll"
+
+# PROP BASE Use_MFC 0
+# PROP BASE Use_Debug_Libraries 0
+# PROP BASE Output_Dir "ReleaseDll"
+# PROP BASE Intermediate_Dir "ReleaseDll"
+# PROP BASE Ignore_Export_Lib 0
+# PROP BASE Target_Dir ""
+# PROP Use_MFC 0
+# PROP Use_Debug_Libraries 0
+# PROP Output_Dir "ReleaseDll"
+# PROP Intermediate_Dir "ReleaseDll"
+# PROP Ignore_Export_Lib 0
+# PROP Target_Dir ""
+# ADD BASE CPP /nologo /MD /W3 /GX /O2 /I "../third_party/MDC/MDCc/include" /I "../third_party/SGD2MAPI98/SGD2MAPIc/include" /D "WIN32" /D "NDEBUG" /D "_UNICODE" /D "UNICODE" /D "SGD2FMB_DLLEXPORT" /FD /c
+# SUBTRACT BASE CPP /YX
+# ADD CPP /nologo /MD /W3 /GX /O2 /I "../third_party/MDC/MDCc/include" /I "../third_party/SGD2MAPI98/SGD2MAPIc/include" /D "WIN32" /D "NDEBUG" /D "_UNICODE" /D "UNICODE" /D "MDC_C_DLLIMPORT" /D "SGD2MAPI_C_DLLIMPORT" /D "SGD2FMB_DLLEXPORT" /FD /c
+# SUBTRACT CPP /YX
+# ADD BASE MTL /nologo /D "NDEBUG" /mktyplib203 /win32
+# ADD MTL /nologo /D "NDEBUG" /mktyplib203 /win32
+# ADD BASE RSC /l 0x409 /d "NDEBUG"
+# ADD RSC /l 0x409 /d "NDEBUG"
+BSC32=bscmake.exe
+# ADD BASE BSC32 /nologo /o"ReleaseDll/SGD2FreeMultibox.bsc"
+# ADD BSC32 /nologo
+LINK32=link.exe
+# ADD BASE LINK32 libunicows.lib libMDCc.lib libSGD2MAPIc.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /dll /machine:I386 /libpath:"../third_party/MDC/MDCc/Release" /libpath:"../third_party/SGD2MAPI98/SGD2MAPIc/Release"
+# ADD LINK32 libunicows.lib MDCc.lib SGD2MAPIc.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /dll /machine:I386 /libpath:"../third_party/MDC/MDCc/ReleaseDll" /libpath:"../third_party/SGD2MAPI98/SGD2MAPIc/ReleaseDll"
+
+!ELSEIF  "$(CFG)" == "SGD2FreeMultibox - Win32 Debug Dll"
+
+# PROP BASE Use_MFC 0
+# PROP BASE Use_Debug_Libraries 1
+# PROP BASE Output_Dir "DebugDll"
+# PROP BASE Intermediate_Dir "DebugDll"
+# PROP BASE Ignore_Export_Lib 0
+# PROP BASE Target_Dir ""
+# PROP Use_MFC 0
+# PROP Use_Debug_Libraries 1
+# PROP Output_Dir "DebugDll"
+# PROP Intermediate_Dir "DebugDll"
+# PROP Ignore_Export_Lib 0
+# PROP Target_Dir ""
+# ADD BASE CPP /nologo /MDd /W3 /Gm /GX /ZI /Od /I "../third_party/MDC/MDCc/include" /I "../third_party/SGD2MAPI98/SGD2MAPIc/include" /D "WIN32" /D "_DEBUG" /D "_UNICODE" /D "UNICODE" /D "SGD2FMB_DLLEXPORT" /FD /GZ /c
+# SUBTRACT BASE CPP /YX
+# ADD CPP /nologo /MDd /W3 /Gm /GX /ZI /Od /I "../third_party/MDC/MDCc/include" /I "../third_party/SGD2MAPI98/SGD2MAPIc/include" /D "WIN32" /D "_DEBUG" /D "_UNICODE" /D "UNICODE" /D "MDC_C_DLLIMPORT" /D "SGD2MAPI_C_DLLIMPORT" /D "SGD2FMB_DLLEXPORT" /FD /GZ /c
+# SUBTRACT CPP /YX
+# ADD BASE MTL /nologo /D "_DEBUG" /mktyplib203 /win32
+# ADD MTL /nologo /D "_DEBUG" /mktyplib203 /win32
+# ADD BASE RSC /l 0x409 /d "_DEBUG"
+# ADD RSC /l 0x409 /d "_DEBUG"
+BSC32=bscmake.exe
+# ADD BASE BSC32 /nologo /o"DebugDll/SGD2FreeMultiboxD.bsc"
+# ADD BSC32 /nologo /o"DebugDll/SGD2FreeMultiboxD.bsc"
+LINK32=link.exe
+# ADD BASE LINK32 libunicows.lib libMDCcD.lib libSGD2MAPIcD.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /dll /debug /machine:I386 /out:"DebugDll/SGD2FreeMultiboxD.dll" /pdbtype:sept /libpath:"../third_party/MDC/MDCc/Debug" /libpath:"../third_party/SGD2MAPI98/SGD2MAPIc/Debug"
+# ADD LINK32 libunicows.lib MDCcD.lib SGD2MAPIcD.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /dll /debug /machine:I386 /out:"DebugDll/SGD2FreeMultiboxD.dll" /pdbtype:sept /libpath:"../third_party/MDC/MDCc/DebugDll" /libpath:"../third_party/SGD2MAPI98/SGD2MAPIc/DebugDll"
+
 !ENDIF 
 
 # Begin Target
 
 # Name "SGD2FreeMultibox - Win32 Release"
 # Name "SGD2FreeMultibox - Win32 Debug"
+# Name "SGD2FreeMultibox - Win32 Release Dll"
+# Name "SGD2FreeMultibox - Win32 Debug Dll"
 # Begin Group "Files"
 
 # PROP Default_Filter ""
