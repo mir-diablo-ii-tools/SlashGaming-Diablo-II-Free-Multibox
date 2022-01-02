@@ -38,7 +38,7 @@
 #include "d2gfx_remove_instance_check_patch.h"
 
 #include <mdc/malloc/malloc.h>
-#include <sgd2mapi.h>
+#include <sgd2mapi98.h>
 
 struct D2GFX_RemoveInstanceCheckPatch
 D2GFX_RemoveInstanceCheckPatch_Init(void) {
