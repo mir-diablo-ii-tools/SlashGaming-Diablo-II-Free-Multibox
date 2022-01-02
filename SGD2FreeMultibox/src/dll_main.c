@@ -37,11 +37,13 @@
 
 #include <windows.h>
 
-#include "../include/sgd2fml_mod_exports.h"
+#include "patches/patches.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif // __cplusplus
+
+static struct Patches patches;
 
 BOOL WINAPI DllMain(
     HINSTANCE hinstDLL,
@@ -50,13 +52,15 @@ BOOL WINAPI DllMain(
 ) {
   switch (fdwReason) {
     case DLL_PROCESS_ATTACH: {
-      Sgd2fml_Mod_OnLoadMpqs();
+      patches = Patches_Init();
+      Patches_Apply(&patches);
 
       return TRUE;
     }
 
     case DLL_PROCESS_DETACH: {
-      Sgd2fml_Mod_OnUnloadMpqs();
+      Patches_Remove(&patches);
+      Patches_Deinit(&patches);
 
       return TRUE;
     }
