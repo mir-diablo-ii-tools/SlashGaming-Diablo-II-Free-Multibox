@@ -1,0 +1,1 @@
+powershell -Command "(Get-Content -Path ./third_party/SGD2MAPI98/SGD2MAPIc/SGD2MAPIc.dsp) | %%{$_ -replace '/libpath:""../third_party/MDC/MDCc/', '/libpath:""""../../../third_party/MDC/MDCc/'} | Set-Content -Path ./third_party/SGD2MAPI98/SGD2MAPIc/SGD2MAPIc.dsp"
