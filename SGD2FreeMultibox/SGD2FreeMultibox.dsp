@@ -108,7 +108,7 @@ LINK32=link.exe
 # ADD BASE RSC /l 0x409 /d "NDEBUG"
 # ADD RSC /l 0x409 /d "NDEBUG"
 BSC32=bscmake.exe
-# ADD BASE BSC32 /nologo /o"ReleaseDll/SGD2FreeMultibox.bsc"
+# ADD BASE BSC32 /nologo
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 libunicows.lib libMDCc.lib libSGD2MAPIc.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /dll /machine:I386 /libpath:"../third_party/MDC/MDCc/Release" /libpath:"../third_party/SGD2MAPI98/SGD2MAPIc/Release"
@@ -168,10 +168,6 @@ SOURCE=.\include\dllexport_undefine.inc
 # Begin Source File
 
 SOURCE=.\include\license.h
-# End Source File
-# Begin Source File
-
-SOURCE=.\include\sgd2fml_mod_exports.h
 # End Source File
 # End Group
 # Begin Group "resource"
@@ -240,10 +236,6 @@ SOURCE=.\src\dll_main.c
 # Begin Source File
 
 SOURCE=.\src\license.c
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\sgd2fml_mod_exports.c
 # End Source File
 # End Group
 # End Group
