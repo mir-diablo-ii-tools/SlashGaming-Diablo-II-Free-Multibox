@@ -24,7 +24,7 @@ license, the licensors of this Program grant you additional permission
 to convey the resulting work.
 
 # SlashGaming Diablo II Modding API for C
-Copyright (C) 2018-2021  Mir Drualga
+Copyright (C) 2018-2022  Mir Drualga
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published
@@ -65,7 +65,7 @@ this Program grant you additional permission to convey the resulting
 work.
 
 # Mir Drualga Common For C
-Copyright (C) 2020  Mir Drualga
+Copyright (C) 2020-2022  Mir Drualga
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published
