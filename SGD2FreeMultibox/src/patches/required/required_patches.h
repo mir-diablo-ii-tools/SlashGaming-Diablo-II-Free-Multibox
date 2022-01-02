@@ -38,7 +38,7 @@
 #ifndef SGD2FMB_PATCHES_REQUIRED_REQUIRED_PATCHES_H_
 #define SGD2FMB_PATCHES_REQUIRED_REQUIRED_PATCHES_H_
 
-#include <sgd2mapi.h>
+#include <sgd2mapi98.h>
 #include "d2gfx_remove_instance_check_patch/d2gfx_remove_instance_check_patch.h"
 
 struct RequiredPatches {

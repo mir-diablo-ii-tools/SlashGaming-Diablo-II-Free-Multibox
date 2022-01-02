@@ -40,7 +40,7 @@
 
 #include <stddef.h>
 
-#include <sgd2mapi.h>
+#include <sgd2mapi98.h>
 
 struct D2GFX_RemoveInstanceCheckPatch_1_00 {
   struct Mapi_GamePatch patches[2];
