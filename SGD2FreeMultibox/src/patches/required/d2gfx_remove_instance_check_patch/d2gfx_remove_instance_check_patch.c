@@ -37,7 +37,6 @@
 
 #include "d2gfx_remove_instance_check_patch.h"
 
-#include <mdc/malloc/malloc.h>
 #include <sgd2mapi98.h>
 
 struct D2GFX_RemoveInstanceCheckPatch
@@ -81,8 +80,7 @@ D2GFX_RemoveInstanceCheckPatch_Init(void) {
     case D2_GameVersion_kLod1_14C:
     case D2_GameVersion_kClassic1_14D:
     case D2_GameVersion_kLod1_14D: {
-      patch.patch.ptr_1_00 = Mdc_malloc(sizeof(*patch.patch.ptr_1_00));
-      *patch.patch.ptr_1_00 = D2GFX_RemoveInstanceCheckPatch_1_00_Init();
+      patch.patch.ptr_1_00 = D2GFX_RemoveInstanceCheckPatch_1_00_Init();
       break;
     }
   }
@@ -130,8 +128,7 @@ void D2GFX_RemoveInstanceCheckPatch_Deinit(
     case D2_GameVersion_kLod1_14C:
     case D2_GameVersion_kClassic1_14D:
     case D2_GameVersion_kLod1_14D: {
-      D2GFX_RemoveInstanceCheckPatch_1_00_Deinit(patch->patch.ptr_1_00);
-      Mdc_free(patch->patch.ptr_1_00);
+      D2GFX_RemoveInstanceCheckPatch_1_00_Deinit(&patch->patch.ptr_1_00);
       return;
     }
   }
@@ -177,7 +174,7 @@ void D2GFX_RemoveInstanceCheckPatch_Apply(
     case D2_GameVersion_kLod1_14C:
     case D2_GameVersion_kClassic1_14D:
     case D2_GameVersion_kLod1_14D: {
-      D2GFX_RemoveInstanceCheckPatch_1_00_Apply(patch->patch.ptr_1_00);
+      D2GFX_RemoveInstanceCheckPatch_1_00_Apply(&patch->patch.ptr_1_00);
       return;
     }
   }
@@ -223,7 +220,7 @@ void D2GFX_RemoveInstanceCheckPatch_Remove(
     case D2_GameVersion_kLod1_14C:
     case D2_GameVersion_kClassic1_14D:
     case D2_GameVersion_kLod1_14D: {
-      D2GFX_RemoveInstanceCheckPatch_1_00_Remove(patch->patch.ptr_1_00);
+      D2GFX_RemoveInstanceCheckPatch_1_00_Remove(&patch->patch.ptr_1_00);
       return;
     }
   }

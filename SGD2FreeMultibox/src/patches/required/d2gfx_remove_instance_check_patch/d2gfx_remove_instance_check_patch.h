@@ -42,7 +42,7 @@
 
 struct D2GFX_RemoveInstanceCheckPatch {
   union {
-    struct D2GFX_RemoveInstanceCheckPatch_1_00* ptr_1_00;
+    struct D2GFX_RemoveInstanceCheckPatch_1_00 ptr_1_00;
   } patch;
 };
 
